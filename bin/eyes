@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+#
+# A somewhat stupid directory watcher, since all the more modern ones
+# seems to require more modern Ruby's than I have installed for the
+# moment. For now it's faster to just use this than learn RVM.
+#
+require 'rubygems'
+require 'rb-fsevent'
+require "open3"
+
+on_change = "#{Dir.pwd}/.on_change"
+
+if File.exists? on_change
+  fsevent = FSEvent.new
+  fsevent.watch Dir.pwd do |dirs|
+    File.new(on_change, 'r').each do |line|
+      if not line.start_with?('#')
+        system line
+      end
+    end
+  end
+  fsevent.run
+else
+  puts 'No .on_change file in this directory'
+end

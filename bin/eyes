@@ -8,18 +8,14 @@ require 'rubygems'
 require 'rb-fsevent'
 require "open3"
 
-on_change = "#{Dir.pwd}/.on_change"
+eyes = "#{Dir.pwd}/.eyes"
 
-if File.exists? on_change
+if File.exists? eyes
   fsevent = FSEvent.new
   fsevent.watch Dir.pwd do |dirs|
-    File.new(on_change, 'r').each do |line|
-      if not line.start_with?('#')
-        system line
-      end
-    end
+    system "(cd #{dirs[0]} && #{eyes})"
   end
   fsevent.run
 else
-  puts 'No .on_change file in this directory'
+  puts 'No .eyes file in this directory'
 end

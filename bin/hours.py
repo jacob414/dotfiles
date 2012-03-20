@@ -42,11 +42,15 @@ def parse_line(line):
         pass
     return project, label.strip(), minutes(timing)
 
+days = {}
+
+isoday = False
 for line in (l.strip() for l in times.readlines()):
     if line.startswith('20'):
         isoday = line
+        days[isoday] = {'day': isoday, 'pause': 0}
         year, month, day = [int(part) for part in isoday.split('-')]
-    if line.startswith('Kom') and 'gick' in line:
+    elif line.startswith('Kom') and 'gick' in line:
         line = line.strip()
         line = line.replace(',', '')
         segs = line.split(' ')
@@ -56,4 +60,14 @@ for line in (l.strip() for l in times.readlines()):
             worktime = went - arrive
             hrs, secs = divmod(worktime.seconds, 60*60)
             mins, secs = divmod(secs, 60)
-            print('%s, %s, %s, %s' % (isoday, hrs, mins, worktime.seconds))
+            days[isoday]['time'] = (hrs, mins)
+    elif line:
+        try:
+            print ', '.join(str(part) for part in (parse_line(line)+(isoday,)))
+        except Exception, e:
+            pass
+
+    if line.startswith('Paus') or line.startswith('Lunch'):
+        _, _, pause = parse_line(line)
+        if isoday:
+            days[isoday]['pause'] += pause

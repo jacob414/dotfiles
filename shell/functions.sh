@@ -63,6 +63,8 @@ function bomb() {
 
 }
 
+function cdp { cd `px home $1`; }
+
 function remoting {
     export EDITOR='emacs -nw'
 }

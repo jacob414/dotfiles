@@ -3,6 +3,8 @@ if [ -n `which gls` ]; then
     export PATH=/usr/local/bin:$PATH
 fi
 
+export PATH=~/.cabal/bin:$PATH
+
 export EDITOR="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 
 export NODE_PATH=/usr/local/lib/node

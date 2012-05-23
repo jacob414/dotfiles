@@ -3,6 +3,7 @@ if [ -n `which gls` ]; then
     export PATH=/usr/local/bin:$PATH
 fi
 
+export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 export PATH=~/.cabal/bin:$PATH
 
 export EDITOR="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"

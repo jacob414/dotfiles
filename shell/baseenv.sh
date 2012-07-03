@@ -11,7 +11,6 @@ DOTFILES=~/src/mine/dotfiles/shell
 export PS1="\[\033[0;32m\]\h\[\033[0m\] \w$ "
 export SRC=$HOME/src
 export MIRROR=$DB/Mirror
-export OPT=$HOME/opt
 
 export PATH=$HOME/bin:$PATH
 

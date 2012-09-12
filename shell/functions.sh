@@ -1,9 +1,6 @@
-function srcfind {
-    find . -name $1 \
-    -not -path '**/.svn/*' \
-    -not -path '**/.hg/*' \
-    -not -path '**/*.egg/*'
-}
+NOFIND="-not -path '**/.git/*' -not -path '**/.hg/*
+ -not -path '**/.svn/*' -not -path '**/*.egg/*'
+ -not -path '.*\.min\.js'"
 
 function pygrep() {
     find . -type f \
@@ -23,6 +20,14 @@ function jsgrep() {
         -not -path '**/.hg/*' \
         -not -path '.*\.min\.js' \
         -not -path '*/test/test*.py' | \
+        xargs grep -H -n -s "$*"
+    return $?
+}
+
+function mgrep {
+    find . -type f \
+           '(' -regex '.*\.m' -or -regex '.*\.h' -or -regex '.*\.c' ')'  \
+        $NOFIND | \
         xargs grep -H -n -s "$*"
     return $?
 }

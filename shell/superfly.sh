@@ -8,7 +8,7 @@ export PATH=~/.cabal/bin:$PATH
 
 export EDITOR="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 
-export NODE_PATH=/usr/local/lib/node
+export NODE_PATH=/usr/local/share/npm/lib/node_modules
 
 export ANDROID_HOME=/usr/local/Cellar/android-sdk/r18
 

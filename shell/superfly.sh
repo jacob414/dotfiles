@@ -23,3 +23,5 @@ alias smallrd='diskutil erasevolume HFS+ "ramdisk" `hdiutil attach -nomount ram:
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 rvm use 1.9.3
+
+source ~/src/mine/dotfiles/shell/ext/git-completion.bash

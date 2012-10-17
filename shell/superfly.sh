@@ -7,7 +7,7 @@ export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH=~/.cabal/bin:$PATH
 
-export EDITOR="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+export EDITOR=emacsclient
 
 export NODE_PATH=/usr/local/share/npm/lib/node_modules
 

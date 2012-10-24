@@ -20,6 +20,7 @@ function jsgrep() {
         -not -path '**/.hg/*' \
         -not -path '**/node_modules/*' \
         -not -path '.*\.min\.js' \
+        -not -path '.*\.bundle\.js' \
         -not -path '*/test/test*.py' | \
         xargs grep -H -n -s "$*"
     return $?

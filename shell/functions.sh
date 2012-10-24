@@ -18,6 +18,7 @@ function jsgrep() {
            '(' -regex '.*\.js' -or -regex '.*\.coffee' -or -regex '.*\.html' ')'  \
         -not -path '**/.svn/*' \
         -not -path '**/.hg/*' \
+        -not -path '**/node_modules/*' \
         -not -path '.*\.min\.js' \
         -not -path '*/test/test*.py' | \
         xargs grep -H -n -s "$*"

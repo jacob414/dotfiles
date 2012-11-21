@@ -59,6 +59,8 @@ function textgrep {
 
 alias lsxxx='textgrep XXX'
 alias lstodo='textgrep TODO'
+alias lswip='textgrep WIP'
+alias lsfixme='textgrep FIXME'
 
 function bomb() {
     # Remove temporary files.

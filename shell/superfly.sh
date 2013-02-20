@@ -25,3 +25,7 @@ alias smallrd='diskutil erasevolume HFS+ "ramdisk" `hdiutil attach -nomount ram:
 rvm use 1.9.3
 
 source ~/src/mine/dotfiles/shell/ext/git-completion.bash
+
+# From
+# http://www.leancrew.com/all-this/2013/02/getting-rid-of-open-with-duplicates/
+alias fixopenwith='"/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister" -kill -r -domain local -domain system -domain user'

@@ -1,8 +1,0 @@
-// -*- mode: objc -*-
-// Copyright `(my-longyear)` Plexical
-
-#import <Foundation/Foundation.h>
-
-@interface $1: NSObject
-
-@end

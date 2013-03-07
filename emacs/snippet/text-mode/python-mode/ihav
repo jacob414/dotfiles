@@ -1,2 +1,0 @@
-if hasattr(self, '$1'):
-   $2

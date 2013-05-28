@@ -6,6 +6,7 @@ fi
 export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH=~/.cabal/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
 
 export EDITOR=emacsclient
 

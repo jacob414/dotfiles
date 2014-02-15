@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+"""
+A personal rename script. Because I can write it faster than I can
+find and learn something existing.
+"""
+
+import os
+import time
+from glob import glob
+from datetime import datetime
+
+for fn in glob('./*.JPG'):
+    stamped = ('%s.jpg' %
+               (datetime.fromtimestamp(
+                os.path.getmtime(fn)).strftime('%y-%m-%d,%H.%M')) )
+
+    os.rename(fn, stamped)
+    # print('%s -> %s' % (fn, stamped))

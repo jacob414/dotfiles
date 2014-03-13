@@ -95,3 +95,9 @@ alias heremacs='echo "(make-frame-on-display \"$DISPLAY\")" | gnudoit'
 alias droid-web-tail='./adb logcat browser:V *:S'
 
 alias passphrase='shuf -n4 /usr/share/dict/words'
+
+# Nifty oneliner to list all targets in a Makefile
+# Thanks to todd hodes, see http://stackoverflow.com/a/9524878/288672
+function lsmake {
+    make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}'
+}

@@ -101,3 +101,10 @@ alias passphrase='shuf -n4 /usr/share/dict/words'
 function lsmake {
     make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}'
 }
+
+# Cleans whiteboard images using ImageMagick
+# Thanks to Leland Batey, see https://gist.github.com/lelandbatey/8677901
+function wb-clean {
+    convert "$1" -morphology Convolve DoG:15,100,0 \
+        -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$2"
+}

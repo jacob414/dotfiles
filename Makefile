@@ -6,6 +6,11 @@ SYS_KEYCHAIN=/System/Library/Keychains/SystemRootCertificates.keychain
 LOCAL_SSL_DIR=$(HOME)/.ssl
 OSX_CERTS=$(LOCAL_SSL_DIR)/osx_cert.crt
 
+MY_SOURCES=~/src/mine
+
+.PHONY: all
+all: $(OSX_CERTS) $(HOME)/.pdbrc
+
 $(LOCAL_SSL_DIR):
 	mkdir -p $(LOCAL_SSL_DIR)
 
@@ -22,3 +27,6 @@ rm-cert:
 
 .PHONY: re-cert
 re-cert: rm-cert cert
+
+$(HOME)/.pdbrc:
+	ln -s $(MY_SOURCES)/dotfiles/pdbrc.py $@

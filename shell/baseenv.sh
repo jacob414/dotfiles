@@ -14,8 +14,6 @@ export MIRROR=$DB/Mirror
 
 export PATH=$HOME/bin:$PATH
 
-export PIP_DOWNLOAD_CACHE=~/Dropbox/Arkiv/Python
-
 if [ -d ~/man ]; then
    MANPATH=~/man:"${MANPATH}"
    export MANPATH

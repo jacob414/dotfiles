@@ -33,3 +33,7 @@ alias fixopenwith='"/System/Library/Frameworks/CoreServices.framework/Frameworks
 
 # https://github.com/basecamp/pow/issues/412
 alias powfix='touch ~/.pow/restart.txt'
+
+function listening {
+    lsof -n -i4TCP:$1 | grep LISTEN
+}

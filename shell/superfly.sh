@@ -37,3 +37,6 @@ alias powfix='touch ~/.pow/restart.txt'
 function listening {
     lsof -n -i4TCP:$1 | grep LISTEN
 }
+
+# OPAM configuration
+source ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true

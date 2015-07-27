@@ -40,3 +40,7 @@ function listening {
 
 # OPAM configuration
 source ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
+function qv {
+    qlmanage -p $1 2> /dev/null # spams stderr
+}

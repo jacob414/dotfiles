@@ -44,3 +44,7 @@ source ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 function qv {
     qlmanage -p $1 2> /dev/null # spams stderr
 }
+
+# NVM configuration
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh

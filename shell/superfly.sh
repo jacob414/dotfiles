@@ -3,7 +3,10 @@ if [ -n `which gls` ]; then
     export PATH=/usr/local/bin:$PATH
 fi
 
-export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
+BREW=/usr/local
+CELLAR=$BREW/Cellar
+
+export PATH=$CELLAR/python/2.7.10_2/bin:$PATH
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH=~/.cabal/bin:$PATH
 export PATH=/usr/local/sbin:$PATH

@@ -12,3 +12,5 @@ function listening {
 function qv {
     qlmanage -p $1 2> /dev/null # spams stderr
 }
+
+export EDITOR="/usr/local/Cellar/emacs/24.5/bin/emacsclient"

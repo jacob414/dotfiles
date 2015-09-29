@@ -1,0 +1,4 @@
+#!/bin/sh
+defaults write com.apple.dock expose-animation-duration -float 0.02
+defaults delete com.apple.dock expose-animation-duration
+killall Dock

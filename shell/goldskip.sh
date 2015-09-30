@@ -14,3 +14,5 @@ function qv {
 }
 
 export EDITOR="/usr/local/Cellar/emacs/24.5/bin/emacsclient"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

@@ -49,3 +49,5 @@ function qv {
 # NVM configuration
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
+
+alias dns-flush='sudo killall -HUP mDNSResponder'

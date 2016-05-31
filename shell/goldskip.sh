@@ -51,3 +51,6 @@ export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
 alias dns-flush='sudo killall -HUP mDNSResponder'
+
+# Ansible
+export ANSIBLE_HOSTS=$HOME/src/plexical/infrastructure/ansible.ini

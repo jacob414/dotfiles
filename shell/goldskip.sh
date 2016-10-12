@@ -15,7 +15,6 @@ export EDITOR=emacsclient
 
 export NODE_PATH=/usr/local/share/npm/lib/node_modules
 
-. /usr/local/Cellar/coreutils/8.7/aliases
 unalias ls
 alias ls='gls --color=auto'
 

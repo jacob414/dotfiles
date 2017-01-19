@@ -6,7 +6,11 @@ fi
 BREW=/usr/local
 CELLAR=$BREW/Cellar
 
+export PYENV_ROOT=/usr/local/var/pyenv
+mkdir -p $PYENV_ROOT
+
 export PATH=$CELLAR/python/2.7.10_2/bin:$PATH
+export PATH=$PYENV_ROOT/versions/3.6.0/bin:$PATH
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH=~/.cabal/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
@@ -14,6 +18,8 @@ export PATH=/usr/local/sbin:$PATH
 export EDITOR=emacsclient
 
 export NODE_PATH=/usr/local/share/npm/lib/node_modules
+
+export JAVA_HOME=`/usr/libexec/java_home`
 
 unalias ls
 alias ls='gls --color=auto'
@@ -54,3 +60,6 @@ alias dns-flush='sudo killall -HUP mDNSResponder'
 
 # Ansible
 export ANSIBLE_HOSTS=$HOME/src/plexical/infrastructure/ansible.ini
+
+# Yarn
+export PATH="$HOME/.yarn/bin:$PATH"

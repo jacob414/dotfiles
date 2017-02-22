@@ -1,3 +1,6 @@
 [submodule "zenburn-iterm2"]
 	path = zenburn-iterm2
 	url = https://github.com/baskerville/iTerm-2-Color-Themes.git
+[submodule "zenburn"]
+	path = zenburn
+	url = https://github.com/colinta/zenburn.git

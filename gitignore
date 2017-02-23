@@ -1,3 +1,8 @@
 Mine_*
 poc.*
 .#*
+*.pyc
+*.o
+*.so
+*.pem
+*.csr

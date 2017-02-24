@@ -6,3 +6,4 @@ poc.*
 *.so
 *.pem
 *.csr
+diasend-backend.conf

@@ -7,3 +7,4 @@ poc.*
 *.pem
 *.csr
 diasend-backend.conf
+poc/*

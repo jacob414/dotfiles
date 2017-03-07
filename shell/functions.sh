@@ -72,6 +72,8 @@ function bomb() {
 
 }
 
+alias pybomb='find . -name "*.pyc"  -exec rm '{}' \; -print'
+
 function cdp { cd `px home $1`; }
 
 function remoting {

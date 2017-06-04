@@ -1,3 +1,11 @@
 Mine_*
-poc.*
+poc*
+test_poc.py
 .#*
+*.pyc
+*.o
+*.so
+*.pem
+*.csr
+diasend-backend.conf
+poc/*

@@ -36,24 +36,24 @@ function mgrep {
 
 function textgrep {
     find . -type f \
-    -not -path '**/.svn/*' \
-    -not -path '**/.hg/*' \
-    -not -path '**/*.egg/*' \
-    -not -path '**/conf/ssh/*' \
-    -not -path '**/conf/ipython/*' \
-    -not -path '*.egg' \
-    -not -path '*.cache' \
-    -not -path '*.lock' \
-    -not -path '*.jpg' \
-    -not -path '*.pdf' \
-    -not -path '*.png' \
-    -not -path '*.gif' \
-    -not -path '*.ico' \
-    -not -path '*.pyc' \
-    -not -path '*.gz' \
-    -not -path '*.xml' \
-    -not -path '**/*.egg-info/*' | \
-    xargs grep -H -n -s "$*"
+         -not -path '**/.svn/*' \
+         -not -path '**/.hg/*' \
+         -not -path '**/*.egg/*' \
+         -not -path '**/conf/ssh/*' \
+         -not -path '**/conf/ipython/*' \
+         -not -path '*.egg' \
+         -not -path '*.cache' \
+         -not -path '*.lock' \
+         -not -path '*.jpg' \
+         -not -path '*.pdf' \
+         -not -path '*.png' \
+         -not -path '*.gif' \
+         -not -path '*.ico' \
+         -not -path '*.pyc' \
+         -not -path '*.gz' \
+         -not -path '*.xml' \
+         -not -path '**/*.egg-info/*' | \
+        xargs grep -H -n -s "$*"
     return $?
 }
 
@@ -71,6 +71,8 @@ function bomb() {
              -print
 
 }
+
+alias pybomb='find . -name "*.pyc"  -exec rm '{}' \; -print'
 
 function cdp { cd `px home $1`; }
 

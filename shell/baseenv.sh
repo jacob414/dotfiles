@@ -8,7 +8,8 @@ fi
 
 DOTFILES=~/src/mine/dotfiles/shell
 
-export PS1="\[\033[0;32m\]\h\[\033[0m\] \w$ "
+export PS1='\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
 export SRC=$HOME/src
 export MIRROR=$DB/Mirror
 
@@ -20,7 +21,7 @@ if [ -d ~/man ]; then
 fi
 
 if test `id -nu` != 'jacob'; then
-    export PS1="\[\033[0;31m\]\u\[\033[0;32m\]@\h\[\033[0m\] \w$ "
+    export PS1='$\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 fi
 
 if test `uname` == 'Darwin'; then

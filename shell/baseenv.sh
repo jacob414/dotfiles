@@ -41,4 +41,4 @@ alias oe-mongo='mongod run --config ~/lnk/oe/conf/mongod.conf'
 
 bind '"\C-l":"ls\n"'
 
-export CDPATH=.:~/src:~
+export CDPATH=.:~/src:~:~/src/mine

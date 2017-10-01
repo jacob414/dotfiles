@@ -9,3 +9,4 @@ test_poc.py
 *.csr
 diasend-backend.conf
 poc/*
+.+*

@@ -21,6 +21,10 @@ if [ -d ~/man ]; then
    export MANPATH
 fi
 
+if [ `uname` == "Darwin" ]; then
+    export LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+fi
+
 if test `id -nu` != 'jacob'; then
     export PS1='$\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 fi

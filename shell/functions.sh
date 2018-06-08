@@ -112,3 +112,10 @@ function wb-clean {
 }
 
 function em { emacsclient $@ & }
+
+# Prints current git branch if on repo - otherwise print nothing.
+# Thanks  Eranga Bandara,
+# https://coderwall.com/p/fasnya/add-git-branch-name-to-bash-prompt
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}

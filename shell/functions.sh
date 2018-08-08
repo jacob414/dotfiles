@@ -111,11 +111,13 @@ function wb-clean {
         -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$2"
 }
 
-function em { emacsclient $@ & }
+function em {
+    emacs -nw -l ~/src/mine/emacs.d/micro.el -q $@
+}
 
 # Prints current git branch if on repo - otherwise print nothing.
 # Thanks  Eranga Bandara,
 # https://coderwall.com/p/fasnya/add-git-branch-name-to-bash-prompt
 parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/'
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
 }

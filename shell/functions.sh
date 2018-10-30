@@ -6,6 +6,7 @@ function pygrep() {
     find . -type f \
            '(' -regex '.*\.py' -or -regex '.*\.blm' ')'  \
        -not -path '**/.svn/*' \
+       -not -path '**/build/**' \
        -not -path '**/.hg/*' \
        -not -path '**/*.egg/*' \
            -not -path '*/test/test*.py' | \

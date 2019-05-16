@@ -8,6 +8,8 @@ function pygrep() {
        -not -path '**/.svn/*' \
        -not -path '**/build/**' \
        -not -path '**/.hg/*' \
+       -not -path '**/.git/*' \
+       -not -path '**/lib/python*/site-packages/**' \
        -not -path '**/*.egg/*' \
            -not -path '*/test/test*.py' | \
         xargs grep -H -n -s "$*"
@@ -115,6 +117,11 @@ function wb-clean {
 function em {
     emacs -nw -l ~/src/mine/emacs.d/micro.el -q $@
 }
+
+# To colour stderr in read, thx killdash9,
+# https://serverfault.com/a/502019/51531
+color()
+ (set -o pipefail;"$@" 2>&1>&3|sed $'s,.*,\e[31m&\e[m,'>&2)3>&1
 
 # Prints current git branch if on repo - otherwise print nothing.
 # Thanks  Eranga Bandara,

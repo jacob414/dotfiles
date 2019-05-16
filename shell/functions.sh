@@ -21,6 +21,8 @@ function jsgrep() {
            '(' -regex '.*\.js' -or -regex '.*\.coffee' -or -regex '.*\.html' ')'  \
         -not -path '**/.svn/*' \
         -not -path '**/.hg/*' \
+        -not -path '**/.git/*' \
+        -not -path '**/lib/python*/site-packages/**' \
         -not -path '**/node_modules/*' \
         -not -path '.*\.min\.js' \
         -not -path '.*\.bundle\.js' \
@@ -41,6 +43,8 @@ function textgrep {
     find . -type f \
          -not -path '**/.svn/*' \
          -not -path '**/.hg/*' \
+         -not -path '**/.git/*' \
+         -not -path '**/lib/python*/site-packages/**' \
          -not -path '**/*.egg/*' \
          -not -path '**/conf/ssh/*' \
          -not -path '**/conf/ipython/*' \

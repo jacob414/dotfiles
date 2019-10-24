@@ -1,11 +1,4 @@
 #!/bin/sh
-if [ -z "$DB" ]; then
-    export DB=~/Dropbox
-fi
-if [ -z "$CONF" ]; then
-    export CONF=$DB/Config/Shell
-fi
-
 DOTFILES=~/src/mine/dotfiles/shell
 MINE=~/src/mine/skunkworks
 
@@ -40,7 +33,6 @@ alias prev='svn diff PREV'
 alias quickmacs='emacs -nw -q'
 alias nicepy='~/opt/mypy/bin/ipython'
 
-export OEBASE=$DB/Jobb/OE
 alias oe-mode='source $OEBASE/scripts/oerc.sh'
 alias oe-mongo='mongod run --config ~/lnk/oe/conf/mongod.conf'
 

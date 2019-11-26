@@ -7,7 +7,7 @@ export PS1='\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[33
 export SRC=$HOME/src
 export MIRROR=$DB/Mirror
 
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$PATH:/usr/local/anaconda3/bin
 
 if [ -d ~/man ]; then
    MANPATH=~/man:"${MANPATH}"

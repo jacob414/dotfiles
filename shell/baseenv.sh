@@ -19,7 +19,7 @@ if [ `uname` == "Darwin" ]; then
 fi
 
 if test `id -nu` != 'jacob'; then
-    export PS1='$\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 fi
 
 if test `uname` == 'Darwin'; then

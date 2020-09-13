@@ -15,3 +15,7 @@ source ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 function qv {
     qlmanage -p $1 2> /dev/null # spams stderr
 }
+
+# MyPy
+export MYPYPATH=`realpath ~/src/ext/python/typeshed`:`realpath ~/src/mine/skunkworks/python/stubs`
+

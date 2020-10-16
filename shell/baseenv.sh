@@ -29,6 +29,7 @@ else
 fi
 
 alias ll='ls -la'
+alias l='ls -1'
 alias prev='svn diff PREV'
 alias quickmacs='emacs -nw -q'
 alias nicepy='~/opt/mypy/bin/ipython'

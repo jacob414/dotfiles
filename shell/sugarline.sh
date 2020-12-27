@@ -33,3 +33,5 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+export PATH=$PATH:/Applications/kitty.app/Contents/MacOS

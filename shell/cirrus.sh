@@ -1,2 +1,10 @@
 #!/bin/sh
-export PS1='\[\033[01;32m\]\u@\[\033[01;31m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+export EDITOR=qmacs
+
+source ~/src/mine/dotfiles/shell/ext/git-completion.bash
+
+# OPAM configuration
+source ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
+# MyPy
+export MYPYPATH=`realpath ~/src/ext/python/typeshed`:`realpath ~/src/mine/skunkworks/python/stubs`

@@ -17,7 +17,7 @@ function qv {
 }
 
 # MyPy
-export MYPYPATH=`realpath ~/src/ext/python/typeshed`:`realpath ~/src/mine/skunkworks/python/stubs`
+export MYPYPATH=`realpath ~/src/ext/python/typeshed`:`realpath ~/src/mine/skunkworks/python/stubs`:`realpath ~/src/oss/kingston/`:`realpath ~/src/oss/ormsnack/`
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

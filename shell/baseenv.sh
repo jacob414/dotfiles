@@ -2,7 +2,7 @@
 DOTFILES=~/src/mine/dotfiles/shell
 MINE=~/src/mine/skunkworks
 
-source "${DOTFILES}/functions.sh"
+source "${DOTFILES}/shell/functions.sh"
 
 export PS1='\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[33m\]$(parse_git_branch)\[\033[00m\]\n\W \\$ \[$(tput sgr0)\]'
 

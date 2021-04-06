@@ -34,4 +34,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export XDG_RUNTIME_DIR="`realpath ~/.local/run`"
+
 export PATH=$PATH:/Applications/kitty.app/Contents/MacOS

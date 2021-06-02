@@ -1,1 +1,3 @@
 /Users/jacob/opt/plus/anaconda3
+/Users/jacob/opt/plus/anaconda3/envs/plus
+/Users/jacob/opt/plus/anaconda3/envs/trade

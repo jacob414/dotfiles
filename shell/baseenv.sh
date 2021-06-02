@@ -1,6 +1,19 @@
 #!/bin/sh
-DOTFILES=~/src/mine/dotfiles/shell
+mkdir -p ~/bin
+
+export PATH=$PATH:$HOME/bin
+
+DOTFILES=~/src/mine/dotfiles
 MINE=~/src/mine/skunkworks
+
+which realpath
+if [ "$?" != "0" ]; then
+    echo "realpath not present"
+    mkdir -p ~/bin
+    cp "$DOTFILES/env/osx/realpath" ~/bin/realpath
+else
+    echo "realpath present"
+fi
 
 source "${DOTFILES}/shell/functions.sh"
 

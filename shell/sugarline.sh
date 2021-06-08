@@ -39,6 +39,3 @@ conda activate plus
 export XDG_RUNTIME_DIR="`realpath ~/.local/run`"
 
 export PATH=$PATH:/Applications/kitty.app/Contents/MacOS
-host    all             all              0.0.0.0/0                       md5
-host    all             all              ::/0                            md5
-

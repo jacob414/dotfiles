@@ -11,8 +11,6 @@ if [ "$?" != "0" ]; then
     echo "realpath not present"
     mkdir -p ~/bin
     cp "$DOTFILES/env/osx/realpath" ~/bin/realpath
-else
-    echo "realpath present"
 fi
 
 source "${DOTFILES}/shell/functions.sh"

@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# Check if an argument is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: uncbr <cbrfilename.cbr>"
+    exit 1
+fi
+
+# Get the filename without extension and sanitize it
+filename="${1%.cbr}"
+safe_filename=$(basename "$filename" | tr -cd '[:alnum:]_-')
+input_file="$1"
+output_pdf="${filename}.pdf"   # Use original filename for output PDF
+output_dir="/tmp/$safe_filename"
+
+# Check if the input file exists and is a .cbr file
+if [ ! -f "$input_file" ] || [[ "$input_file" != *.cbr ]]; then
+    echo "Error: Please provide a valid .cbr file."
+    exit 1
+fi
+
+# Create a temporary directory for extracting files
+mkdir -p "$output_dir"
+
+# Extract the .cbr file into the temporary directory using 'unar'
+echo "Running: unar \"$input_file\" -o \"$output_dir/\""
+unar "$input_file" -o "$output_dir/" > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to extract $input_file."
+    rm -rf "$output_dir"
+    exit 1
+fi
+
+# Find all image files and save them to a sorted list
+
+# Ensure that the list is not empty
+if [ ! -s /tmp/image_list.txt ]; then
+    echo "Error: No images found for conversion."
+    exit 1
+fi
+
+# Suppress listing of image files and display only relevant info
+# Uncomment the following lines if you need to debug
+# echo "Image files found:"
+# cat /tmp/image_list.txt
+
+echo "Converting images to PDF..."
+# Use `magick` command to avoid deprecation warnings
+magick /tmp/image_list.txt \
+  -auto-orient \
+  -strip \
+  -colorspace Gray \
+  -resize 1872x1404\> \
+  -ordered-dither o8x8 \
+  -quality 85 \
+  -density 226 \
+  -units PixelsPerInch \
+  -background white \
+  -alpha remove \
+  -alpha off \
+  $(output_pdf)
+
+
+
+# Check if the PDF was created successfully
+if [ -f "$output_pdf" ]; then
+    echo "PDF successfully created: $output_pdf"
+    # Only clean up if the PDF was created successfully
+    rm -rf "$output_dir"
+    rm /tmp/image_list.txt
+else
+    echo "Error: Failed to create PDF."
+    # Keep the output directory for inspection
+    echo "Temporary files are in $output_dir for inspection."
+fi

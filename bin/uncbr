@@ -51,7 +51,6 @@ magick /tmp/image_list.txt \
   -strip \
   -colorspace Gray \
   -resize 1872x1404\> \
-  -ordered-dither o8x8 \
   -quality 85 \
   -density 226 \
   -units PixelsPerInch \
@@ -73,3 +72,6 @@ else
     # Keep the output directory for inspection
     echo "Temporary files are in $output_dir for inspection."
 fi
+
+# Bra 2024-10-31
+# magick *.jpg -auto-orient -strip -colorspace Gray -resize 1872x1404\> -quality 85 -density 226 -units PixelsPerInch -background white -alpha remove -alpha off ~/Downloads/comedian.pdf

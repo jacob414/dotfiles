@@ -1,0 +1,26 @@
+#!/bin/sh
+IN=$1
+OUTGRAY="$1-rm2.pdf"
+
+echo "Reformat PDF $IN..."
+gs -sDEVICE=pdfwrite \
+   -dCompatibilityLevel=1.4 \
+   -dPDFSETTINGS=/ebook \
+   -dPDFFitPage \
+   -dColorConversionStrategy=/Gray \
+   -dProcessColorModel=/DeviceGray \
+   -dDownsampleColorImages=true \
+   -dDownsampleGrayImages=true \
+   -dDownsampleMonoImages=true \
+   -dColorImageResolution=150 \
+   -dGrayImageResolution=150 \
+   -dMonoImageResolution=150 \
+   -dFIXEDMEDIA -dPDFFitPage \
+   -dNOPAUSE -dBATCH \
+   -sOutputFile=$OUTGRAY \
+   $IN
+
+OUTGRAY_CROPPED="$OUTGRAY-cropped.pdf"
+
+pdfcrop $OUTGRAY $OUTGRAY_CROPPED
+echo "Done, wrote $OUTGRAY_CROPPED"

@@ -1,0 +1,3 @@
+#!/bin/sh
+RM_HOST="root@$RM_HOST"
+rsync -arvz $RM_HOST:/home/root/.local/share/remarkable/xochitl/ ~/src/backup/remarkable/

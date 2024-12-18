@@ -1,0 +1,3 @@
+#!/bin/sh
+[ -f ~/.config/remarkablerc.sh ] && source ~/.config/remarkablerc.sh
+ssh $RM_HOST systemctl restart xochitl

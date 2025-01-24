@@ -68,6 +68,7 @@ alias lsxxx='textgrep XXX'
 alias lstodo='textgrep TODO'
 alias lswip='textgrep WIP'
 alias lsfixme='textgrep FIXME'
+alias degit='rm -Rf .git .gitignore'
 
 function bomb() {
     # Remove temporary files.

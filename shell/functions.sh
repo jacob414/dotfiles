@@ -64,6 +64,11 @@ function textgrep {
     return $?
 }
 
+function gpgrestart {
+    gpgconf --kill gpg-agent
+    eval $(gpg-agent --daemon)
+}
+
 alias lsxxx='textgrep XXX'
 alias lstodo='textgrep TODO'
 alias lswip='textgrep WIP'

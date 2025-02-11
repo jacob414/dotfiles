@@ -1,7 +1,7 @@
 #!/bin/sh
 mkdir -p ~/bin
 
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/src/mine/dotfiles/bin:$HOME/bin
 
 DOTFILES=~/src/mine/dotfiles
 MINE=~/src/mine/skunkworks

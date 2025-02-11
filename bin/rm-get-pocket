@@ -1,0 +1,2 @@
+#!/bin/sh
+docker run -it --env TZ=Europe/Amsterdam -p 65112:65112 -v ~/.config/rmapi/:/root/.remarkable-pocket ghcr.io/nov1n/remarkable-pocket:0.5.0

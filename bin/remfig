@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# remfig: generate .rmdoc from a .hcl using drawj2d, then upload via rmapi
+
+# Ensure exactly one argument is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <file.hcl>"
+    exit 1
+fi
+
+INPUT="$1"
+
+# Verify that the input has a .hcl extension
+if [[ "$INPUT" != *.hcl ]]; then
+    echo "Error: Input file must have a .hcl extension." >&2
+    exit 1
+fi
+
+# Derive the output filename by replacing .hcl with .rmdoc
+OUTPUT="${INPUT%.hcl}.rmdoc"
+
+# Run drawj2d to produce the .rmdoc
+if drawj2d -T rmdoc -o "$OUTPUT" "$INPUT"; then
+    echo "drawj2d succeeded; uploading $OUTPUT..."
+    rmapi put "$OUTPUT"
+else
+    echo "drawj2d failed; exiting." >&2
+    exit 1
+fi

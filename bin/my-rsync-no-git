@@ -1,0 +1,7 @@
+#!/bin/sh
+HERE=`pwd`/
+
+rsync --filter=':- .gitignore' \
+      --exclude='.git*' \
+      $HERE $1
+

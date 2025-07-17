@@ -6,7 +6,7 @@ export PATH=$PATH:$HOME/src/mine/dotfiles/bin:$HOME/bin
 DOTFILES=~/src/mine/dotfiles
 MINE=~/src/mine/skunkworks
 
-which realpath
+which realpath > /dev/null 2>&1
 if [ "$?" != "0" ]; then
     echo "realpath not present"
     mkdir -p ~/bin
@@ -55,5 +55,5 @@ export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo -e "$(date "+%Y-%m-%d.
 export CDPATH=.:~/src:~:~/src/mine
 
 # XDG Base Directories
-export XDG_CONFIG_HOME="`realpath ~/.config`"
-export XDG_CACHE_HOME="`realpath ~/.cache`"
+export XDG_CONFIG_HOME="$(realpath ~/.config 2>/dev/null)"
+export XDG_CACHE_HOME="$(realpath ~/.cache 2>/dev/null)"

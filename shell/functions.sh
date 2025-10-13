@@ -89,10 +89,6 @@ alias pybomb='find . -name "*.pyc"  -exec rm '{}' \; -print'
 
 function cdp { cd `px home $1`; }
 
-function remoting {
-    export EDITOR='emacs -nw'
-}
-
 alias eu-reset='hg revert --all && hg st | cut -c 3- | xargs rm && hg pull -u'
 
 alias _bo-bomb='rm -rf bin/ develop-eggs/ eggs/ *.egg-info/ .installed.cfg parts/'

@@ -4,4 +4,4 @@ HERE=`pwd`/
 rsync --filter=':- .gitignore' \
       --exclude='.git*' \
       $HERE $1
-
+rsync -arv --delete stratus:/var/www/html/414soft/ .

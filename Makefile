@@ -1,58 +1,69 @@
 # My home directory
 
-OSX_LIB_KEYCHAIN=/Library/Keychains/System.keychain
-OSX_SYS_KEYCHAIN=/System/Library/Keychains/SystemRootCertificates.keychain
+.PHONY: homedirs
+homedirs: ~/src/mine ~/.config ~/.ssh ~/bin ~/.local/bin ~/go ~/.gitconfig ~/.emacs.d ~/.gitignore ~/src/mine/skunkworks
+# Collected check for directories under home
 
-LOCAL_SSL_DIR=$(HOME)/.ssl
+~/.ssl:
+# SSL directory
+	mkdir -p $~/.ssl
 
-OSX_CERTS=$(LOCAL_SSL_DIR)/osx_cert.crt
-
-MY_SOURCES=~/src/mine
-
-.PHONY: all
-all: homedirs
-
-$(LOCAL_SSL_DIR):
-	mkdir -p $(LOCAL_SSL_DIR)
-
-$(OSX_CERTS):
-	security find-certificate -a -p $(OSX_LIB_KEYCHAIN) $(OSX_SYS_KEYCHAIN) \
-		> $(OSX_CERTS)
-
-.PHONY: certs
-cert: $(OSX_CERTS)
-# Fill in certificates
-
-.PHONY: rm-cert
-rm-cert:
-	rm $(OSX_CERTS)
-
-.PHONY: re-cert
-re-cert: rm-cert cert
-
-$(MY_SOURCES):
-	mkdir -p $(MY_SOURCES)
+~/src/mine:
+# (Somewhat) private source directories
+	mkdir -p ~/src/mine
 
 ~/.config:
 # Enshures a standard ~/.config tree exists
 	mkdir -p ~/.config
 
 ~/bin:
+# User-wide scripts & executables
 	ln -s ~/src/mine/dotfiles/bin ~/bin
 
 ~/.local/bin:
-# Ensures a private bin path
+# Some user-wide scripts & executables goes here
 	mkdir -p ~/.local/bin
 
 ~/.ssh:
 # Enshures a local ~/.ssh directory exists
 	mkdir -p ~/.ssh
 
+~/.emacs.d:
+# Link in Emacs configs
+	ln -s ~/src/mine/emacs.d ~/.emacs.d
+
 ~/src/mine/skunkworks:
 # Creates the 'Skunkworks' directory
 	mkdir -p ~/src/mine/skunkworks/arkiv
 	touch ~/src/mine/skunkworks/arkiv/shell.txt
 
-.PHONY: homedirs
+~/go:
+# Keep go home under the ~/.config tree for a clearer home
+	mkdir -p ~/.config/go
+	ln -s ~/.config/go ~/go
 
-homedirs: $(MY_SOURCES) ~/.config ~/.ssh ~/bin ~/.local/bin ~/src/mine/skunkworks
+~/.gitconfig:
+# Keep Git configuration version controlled
+	ln -s ~/.gitconfig src/mine/skunkworks/hosts/zipfly/git.conf
+
+.PHONY: osx-certs
+osx-cert: ~/.ssh/osx_cert.crt
+# Fill in certificates
+
+.PHONY: osx-rm-cert
+osx-rm-cert:
+# When rebuilding OSX certificates
+	rm $(OSX_CERTS)
+
+.PHONY: re-cert
+osx-re-cert: osx-rm-cert osx-cert
+# Certificates when running Apple junk
+
+.PHONY: ~/.ssl/osx_cert.crt
+~/.ssl/osx_cert.crt:
+# Gather Apple certificates
+	security find-certificate -a -p $(OSX_LIB_KEYCHAIN) $(OSX_SYS_KEYCHAIN) > $(OSX_CERTS)
+
+.PHONY: osx
+osx: osx-re-cert
+# When running Apple junk

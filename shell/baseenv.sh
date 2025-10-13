@@ -57,3 +57,5 @@ export CDPATH=.:~/src:~:~/src/mine
 # XDG Base Directories
 export XDG_CONFIG_HOME="$(realpath ~/.config 2>/dev/null)"
 export XDG_CACHE_HOME="$(realpath ~/.cache 2>/dev/null)"
+
+export EDITOR=qmacs

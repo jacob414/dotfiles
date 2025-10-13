@@ -1,5 +1,5 @@
 #!/bin/sh
-mkdir -p ~/bin
+(cd ~/src/mine/dotfiles ; make)
 
 export PATH=$PATH:$HOME/src/mine/dotfiles/bin:$HOME/bin
 

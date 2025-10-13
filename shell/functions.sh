@@ -111,10 +111,40 @@ alias droid-web-tail='./adb logcat browser:V *:S'
 
 alias passphrase='shuf -n4 /usr/share/dict/words'
 
-# Nifty oneliner to list all targets in a Makefile
-# Thanks to todd hodes, see http://stackoverflow.com/a/9524878/288672
-function lsmake {
-    make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}'
+lsmake() {
+    local makefile="${1:-Makefile}"
+
+    if [[ ! -f "$makefile" ]]; then
+        echo "Error: $makefile not found" >&2
+        return 1
+    fi
+
+    perl -e '
+        open(my $fh, "<", $ARGV[0]) or die "Cannot open $ARGV[0]: $!";
+        my @lines = <$fh>;
+        close($fh);
+
+        for (my $i = 0; $i < @lines; $i++) {
+            # Match target lines (non-indented, ends with colon)
+            if ($lines[$i] =~ /^([^:\s]+):\s*/) {
+                my $target = $1;
+
+                # Skip special targets (starting with .) and variable substitutions
+                next if $target =~ /^\./;
+                next if $target =~ /\$\(/;
+
+                my $comment = "?";
+
+                # Check if next line is a comment
+                if ($i + 1 < @lines && $lines[$i + 1] =~ /^\s*#\s*(.*)$/) {
+                    $comment = $1;
+                    $comment =~ s/\s+$//;  # trim trailing whitespace
+                }
+
+                print "$target - $comment\n";
+            }
+        }
+    ' "$makefile"
 }
 
 # Cleans whiteboard images using ImageMagick

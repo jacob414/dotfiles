@@ -1,5 +1,5 @@
 #!/bin/sh
-(cd ~/src/mine/dotfiles ; make)
+( cd ~/src/mine/dotfiles && out="$(make 2>&1)"; s=$?; [ $s -eq 0 ] || printf '%s\n' "$out" >&2; exit $s )
 
 export PATH=$PATH:$HOME/src/mine/dotfiles/bin:$HOME/bin
 

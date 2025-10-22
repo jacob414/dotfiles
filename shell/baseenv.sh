@@ -33,10 +33,6 @@ if test `id -nu` != 'jacob'; then
     export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 fi
 
-# Custom prompt with red ROOT
-if [ "$EUID" -eq 0 ]; then
-    PS1='\''\[\033[01;31m\]ROOT\[\033[00m\]@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]# '\'''
-fi
 
 if test `uname` == 'Darwin'; then
     alias ls='ls -G'
@@ -64,3 +60,10 @@ export XDG_CONFIG_HOME="$(realpath ~/.config 2>/dev/null)"
 export XDG_CACHE_HOME="$(realpath ~/.cache 2>/dev/null)"
 
 export EDITOR=qmacs
+
+# Custom prompt with red ROOT
+if [ "$EUID" -eq 0 ]; then
+    PS1='\''\[\033[01;31m\]ROOT\[\033[00m\]@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]# '\'''
+    echo '! ! ACHTUNG ! !' | figlet
+    cat ~/src/mine/skunkworks/arkiv/blinkenlichten.txt
+fi

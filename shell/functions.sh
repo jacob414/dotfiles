@@ -165,3 +165,13 @@ color()
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
 }
+
+# Kill process on port
+killport() {
+  local pid=$(lsof -ti tcp:$1)
+  if [ -n "$pid" ]; then
+    kill -TERM $pid && echo "Killed process $pid on port $1"
+  else
+    echo "No process found on port $1"
+  fi
+}

@@ -157,7 +157,10 @@ function em {
 # To colour stderr in read, thx killdash9,
 # https://serverfault.com/a/502019/51531
 color()
- (set -o pipefail;"$@" 2>&1>&3|sed $'s,.*,\e[31m&\e[m,'>&2)3>&1
+(
+    set -o pipefail 2>/dev/null
+    "$@" 2>&1 1>&3 | sed $'s,.*,\e[31m&\e[m,' 1>&2
+) 3>&1
 
 # Prints current git branch if on repo - otherwise print nothing.
 # Thanks  Eranga Bandara,

@@ -1,7 +1,7 @@
 #!/bin/sh
 ( cd ~/src/mine/dotfiles && out="$(make 2>&1)"; s=$?; [ $s -eq 0 ] || printf '%s\n' "$out" >&2; exit $s )
 
-export PATH=$PATH:$HOME/src/mine/dotfiles/bin:$HOME/bin
+export PATH="$HOME/bin:$PATH:$HOME/src/mine/dotfiles/bin"
 
 DOTFILES=~/src/mine/dotfiles
 MINE=~/src/mine/skunkworks

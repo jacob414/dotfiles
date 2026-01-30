@@ -1,2 +1,3 @@
 *.elc
 emacs/site-lisp/coffee
+privaterc.sh

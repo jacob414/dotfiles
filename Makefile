@@ -1,12 +1,14 @@
 # My home directory
 
+HOST := $(shell hostname -s)
+
 .PHONY: homedirs
 homedirs: ~/src/mine ~/.config ~/.ssh ~/bin ~/.local/bin ~/go ~/.gitconfig ~/.emacs.d ~/.gitignore ~/src/mine/skunkworks
 # Collected check for directories under home
 
 ~/.ssl:
 # SSL directory
-	mkdir -p $~/.ssl
+	mkdir -p ~/.ssl
 
 ~/src/mine:
 # (Somewhat) private source directories
@@ -37,6 +39,12 @@ homedirs: ~/src/mine ~/.config ~/.ssh ~/bin ~/.local/bin ~/go ~/.gitconfig ~/.em
 	mkdir -p ~/src/mine/skunkworks/arkiv
 	touch ~/src/mine/skunkworks/arkiv/shell.txt
 
+~/.gitignore:
+# Global gitignore: the host's own if it has one, otherwise the shared one
+	if [ -f ~/src/mine/skunkworks/hosts/$(HOST)/gitignore.conf ]; then \
+	  ln -s ~/src/mine/skunkworks/hosts/$(HOST)/gitignore.conf ~/.gitignore; \
+	else ln -s ~/src/mine/dotfiles/gitignore ~/.gitignore; fi
+
 ~/go:
 # Keep go home under the ~/.config tree for a clearer home
 	mkdir -p ~/.config/go
@@ -44,7 +52,7 @@ homedirs: ~/src/mine ~/.config ~/.ssh ~/bin ~/.local/bin ~/go ~/.gitconfig ~/.em
 
 ~/.gitconfig:
 # Keep Git configuration version controlled
-	ln -s ~/.gitconfig src/mine/skunkworks/hosts/zipfly/git.conf
+	ln -s ~/src/mine/skunkworks/hosts/$(HOST)/git.conf ~/.gitconfig
 
 .PHONY: osx-certs
 osx-cert: ~/.ssh/osx_cert.crt

@@ -97,7 +97,7 @@ alias _bo-unbuild='rm -rf develop-eggs/ eggs/ *.egg-info/ .installed.cfg parts/'
 alias skd='svn diff --diff-cmd=kdiff3'
 alias duh='svn log -r COMMITTED'
 
-alias isodate='date +%Y-%m-%d,%H.%M'
+alias isodate='date +%Y-%m-%d'
 alias isodatetime='date +%Y-%m-%d,%H.%M'
 
 alias hr='echo "--------------------------------------------------------------------------------"'
